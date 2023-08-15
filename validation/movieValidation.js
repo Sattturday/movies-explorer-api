@@ -19,7 +19,7 @@ const movieCelebrate = celebrate({
 
 const movieIdCelebrate = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.number().required(),
+    movieId: Joi.string().length(24).hex().required(),
   }),
 });
 

@@ -2,6 +2,7 @@ const User = require('../models/user');
 const { messages } = require('../utils/constants');
 const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
+const ConflictError = require('../errors/ConflictError');
 
 const getUsers = (req, res, next) => {
   User.find({})
@@ -29,6 +30,10 @@ const updateProfile = (req, res, next) => {
   )
     .then((user) => res.send(user))
     .catch((err) => {
+      if (err.code === 11000) {
+        next(new ConflictError(messages.users.updateBadRequest));
+        return;
+      }
       if (err.name === 'ValidationError') {
         next(new BadRequestError(messages.users.updateBadRequest));
         return;

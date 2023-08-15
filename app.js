@@ -11,8 +11,9 @@ const routes = require('./routes');
 const handleErrors = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./utils/limiter');
+const config = require('./utils/config');
 
-const { PORT, DATABASE_URL } = process.env;
+const { PORT = config.PORT, DATABASE_URL = config.DATABASE_URL } = process.env;
 
 const app = express();
 
@@ -35,8 +36,8 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(limiter);
 app.use(requestLogger);
+app.use(limiter);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
