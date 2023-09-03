@@ -3,7 +3,6 @@ const messages = {
     serverError: 'На сервере произошла ошибка.',
     notFound: 'По указанному пути ничего не найдено.',
     badToken: 'Необходима авторизация.',
-    loginSuccess: 'Вход совершен',
     clearCookie: 'Выход совершен',
   },
   users: {

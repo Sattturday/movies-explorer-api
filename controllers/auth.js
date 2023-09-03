@@ -61,7 +61,7 @@ const login = (req, res, next) => {
               httpOnly: true,
               sameSite: true,
             });
-          res.send({ message: messages.shared.loginSuccess });
+          res.send(user);
         })
         .catch(next);
     })
