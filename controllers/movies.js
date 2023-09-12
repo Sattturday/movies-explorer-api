@@ -19,7 +19,7 @@ const createMovie = (req, res, next) => {
     .then((movie) => res.status(statuses.created).send(movie))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError(messages.movies.badRequest));
+        next(new ConflictError(messages.movies.badId));
         return;
       }
       if (err.name === 'ValidationError') {

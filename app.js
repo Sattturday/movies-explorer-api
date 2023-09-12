@@ -18,7 +18,7 @@ const { PORT = config.PORT, DATABASE_URL = config.DATABASE_URL } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://moviesteka.nomoreparties.co'],
+  origin: ['http://localhost:3001', 'https://moviesteka.nomoreparties.co'],
   credentials: true,
   maxAge: 30,
 }));

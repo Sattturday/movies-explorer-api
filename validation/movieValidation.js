@@ -6,14 +6,15 @@ const movieCelebrate = celebrate({
     country: Joi.string().required(),
     director: Joi.string().required(),
     duration: Joi.number().required(),
+    cardId: Joi.string().length(12).hex().required(),
     year: Joi.string().required(),
+    created_at: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required().regex(urlRegex),
     trailerLink: Joi.string().required().regex(urlRegex),
-    thumbnail: Joi.string().required().regex(urlRegex),
-    movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
+    isSaved: Joi.bool().required(),
   }),
 });
 

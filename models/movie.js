@@ -39,21 +39,14 @@ const movieSchema = new mongoose.Schema(
       },
       required: true,
     },
-    thumbnail: {
-      type: String,
-      validate: {
-        validator: (v) => validator.isURL(v),
-        message: 'Некорректный URL',
-      },
-      required: true,
-    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user',
       required: true,
     },
-    movieId: {
-      type: Number,
+    cardId: {
+      type: String,
+      unique: true,
       required: true,
     },
     nameRU: {
@@ -63,6 +56,13 @@ const movieSchema = new mongoose.Schema(
     nameEN: {
       type: String,
       required: true,
+    },
+    created_at: {
+      type: Date,
+      default: Date.now,
+    },
+    isSaved: {
+      type: Boolean,
     },
   },
   { versionKey: false },
